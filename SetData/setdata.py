@@ -1,15 +1,44 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from typing import List, Tuple, Dict, Any
 # import re
 
 class SetData:
+    """
+    入力したとんとんurlの各種データ互換を作成・保持する。
+
+    Parameters
+    ----------
+    url : str
+        とんとんスケジュールのURL
+
+    Attributes
+    ----------
+    schedule_lists : List[Any]
+        とんとんスケジュールのHTMLを<div class="schedulelist">で区切ったもの
+
+    data : Dict[str, Dict[str, Dict[str,str]]]
+        とんとんスケジュールのデータを日付、ユーザー、時間の順に格納したもの
+
+    data_date_frame : pd.DataFrame
+        とんとんスケジュールのデータを日付ごとに集計したもの
+
+    data_user_dict : Dict[str, Dict[str, Dict[str,str]]]
+        とんとんスケジュールのデータをユーザーごとに集計したもの
+
+    data_user_frame : pd.DataFrame
+        とんとんスケジュールのデータをユーザーごとに集計したもの
+    """
+
+
     def __init__(self, url:str):
         self.url: str = url
-        self.schedule_lists: list = self.get_HTML()
-        self.data = self.get_info()
-        self.data_date_frame = self.data_date_frame()
-        self.data_user_dict = self.data_user_dict()
+        self.schedule_lists: List[Any] = self.get_HTML()
+        self.data:Dict[str, Dict[str, Dict[str,str]]] = self.get_info()
+        self.data_date_frame:pd.DataFrame = self.data_date_frame()
+        self.data_user_dict:Dict[str, Dict[str, Dict[str,str]]] = self.data_user_dict()
+        self.data_user_frame:pd.DataFrame = self.data_user_frame()
 
 
     def get_HTML(self) -> list:

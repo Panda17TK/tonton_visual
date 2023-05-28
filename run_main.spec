@@ -24,7 +24,7 @@ a = Analysis(
         (os.path.join(package_path, "streamlit/runtime"), "./streamlit/runtime")],
 
     # ポイント2
-    hiddenimports=['pandas', 'streamlit-toggle-switch', 'simplejson', 'flask', 'BeautifulSoup4','requests', 'streamlit_toggle', 'pyarrow.vendored.version'],
+    hiddenimports=['pandas', 'BeautifulSoup4','requests', 'streamlit_toggle', 'pyarrow.vendored.version'],
 
     hookspath=['./hooks'],
     hooksconfig={},

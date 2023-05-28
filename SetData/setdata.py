@@ -100,7 +100,7 @@ class SetData:
     # ユーザーごとに集計した辞書を作成
     def data_user_dict(self) -> dict:
         data_user_dict = dict()
-        for date, data_name_time in self.data_dict.items():
+        for date, data_name_time in self.data.items():
             for name, time_data in data_name_time.items():
                 if name in data_user_dict.keys():
                     data_user_dict[name][date]=time_data

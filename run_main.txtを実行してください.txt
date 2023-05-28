@@ -1,0 +1,2 @@
+# script更新時
+> pyinstaller run_main.spec --clean

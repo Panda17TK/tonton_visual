@@ -3,7 +3,7 @@ import sys
 import json
 import os
 import pandas as pd
-import  streamlit_toggle as tog
+# import streamlit_toggle as tog
 
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -24,14 +24,15 @@ def result_page():
             options=list(st.session_state.setdata.data_user_frame.keys()))
     st.header(stock)
     st.session_state.setdata.data_user_frame[stock]=st.session_state.setdata.data_user_frame[stock].replace("", pd.NA).dropna(how='all', axis=0)
-    key1 = tog.st_toggle_switch(label="転置",
-                    key="Key1",
-                    default_value=False,
-                    label_after = True,
-                    inactive_color = '#D3D3D3',
-                    active_color="#11567f",
-                    track_color="#29B5E8"
-                    )
+    # key1 = tog.st_toggle_switch(label="転置",
+    #                key="Key1",
+    #                default_value=False,
+    #                label_after = True,
+    #                inactive_color = '#D3D3D3',
+    #                active_color="#11567f",
+    #                track_color="#29B5E8"
+    #                )
+    key1 = st.checkbox("転値")
     if key1 == False:
         st.dataframe(st.session_state.setdata.data_user_frame[stock])
     elif key1 == True:

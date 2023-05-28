@@ -15,7 +15,11 @@ def result_page():
     st.title('特定の人の予定を抽出')
     input_value = st.session_state.get('input_value')
     st.write('取得したURL:', input_value)
-    st.session_state.setdata = setdata.SetData(input_value)
+    try:
+        st.session_state.setdata = setdata.SetData(input_value)
+    except:
+        st.warning("URLが間違っています。")
+        st.stop()
     stock = st.selectbox(label="絞り込みする人を選んでください",
             options=list(st.session_state.setdata.data_user_frame.keys()))
     st.header(stock)
